@@ -1,0 +1,6 @@
+node_modules
+coverage
+build
+scripts/setup.js
+cypress
+

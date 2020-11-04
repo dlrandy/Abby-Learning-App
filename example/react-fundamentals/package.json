@@ -1,0 +1,84 @@
+{
+  "name": "react-fundamentals",
+  "version": "1.0.0",
+  "description": "The material for learning React fundamentals",
+  "title": "React Fundamentals ⚛",
+  "keywords": [],
+  "homepage": "http://react-fundamentals.netlify.com/",
+  "license": "GPL-3.0-only",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kentcdodds/react-fundamentals"
+  },
+  "bugs": {
+    "url": "https://github.com/kentcdodds/react-fundamentals/issues"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.0",
+    "Abby-Learning-App": "file:../..",
+    "chalk": "^4.1.0",
+    "codegen.macro": "^4.0.0",
+    "is-ci-cli": "^2.1.2",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
+    "react": "0.0.0-experimental-94c0244ba",
+    "react-dom": "0.0.0-experimental-94c0244ba",
+    "typescript": "^4.0.5"
+  },
+  "devDependencies": {
+    "@testing-library/cypress": "^7.0.1",
+    "cypress": "^5.5.0",
+    "eslint-plugin-cypress": "^2.11.2",
+    "npm-run-all": "^4.1.5",
+    "react-scripts": "^4.0.0",
+    "serve": "^11.3.2",
+    "start-server-and-test": "^1.11.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "serve": "serve --no-clipboard --single --listen 8080 build",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
+    "test:coverage": "npm run test -- --watchAll=false",
+    "test:exercises": "npm run test -- testing.*exercises\\/ --onlyChanged",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "test:e2e": "is-ci \"test:e2e:run\" \"test:e2e:dev\"",
+    "pretest:e2e:run": "npm run build",
+    "test:e2e:run": "start-server-and-test serve http://localhost:8080 cy:run",
+    "test:e2e:dev": "start-server-and-test start http://localhost:3000 cy:open",
+    "setup": "node ./scripts/setup && rm -rf node_modules/react node_modules/react-dom",
+    "lint": "eslint .",
+    "// postinstall": "to avoid multiple copies of react on the page. /me shrugs",
+    "postinstall": "rm -rf node_modules/react node_modules/react-dom",
+    "validate": "npm-run-all --parallel build test:coverage lint"
+  },
+  "babel": {
+    "presets": [
+      "babel-preset-react-app"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/final/**/*.js"
+    ]
+  },
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">1%",
+      "last 4 versions",
+      "Firefox ESR",
+      "not ie < 11"
+    ]
+  }
+}
